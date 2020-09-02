@@ -162,7 +162,7 @@ def melfrequencies_mel_filterbank(num_bands, freq_min, freq_max, num_fft_bands):
 	return center_frequencies_mel, lower_edges_mel, upper_edges_mel
 
 
-def compute_melmat(num_mel_bands=12, freq_min=64, freq_max=8000,
+def compute_melmat(num_mel_bands=24, freq_min=64, freq_max=8000,
                    num_fft_bands=513, sample_rate=16000):
 	"""Returns tranformation matrix for mel spectrum.
 	Parameters

@@ -6,8 +6,8 @@ from scipy.ndimage.filters import gaussian_filter1d
 
 # plot & save to file
 import matplotlib.pyplot as plt
-global f, fr, fg, fb, fw, i
-f = open("fa.txt", "w")
+#global f, fr, fg, fb, fw, i
+#f = open("fa.txt", "w")
 #fr = open("fr.txt", "w")
 #fg = open("fg.txt", "w")
 #fb = open("fb.txt", "w")
@@ -94,10 +94,13 @@ def visualize_spectrum(y, o):
     o._prev_spectrum = np.copy(y)
     
     # Color channel mappings
-    r = o.r_filt.update(y - o.common_mode.value)
-    g = np.abs(diff)
-    b = o.b_filt.update(np.copy(y))
-    w = o.w_filt.update(np.copy(y))
+    r = o.r_filt_strong.update(y - o.common_mode.value)
+    g = np.abs(o.g_filt_strong.update(diff))
+    #g = o.g_filt_strong.update(np.abs(diff))
+    b = o.b_filt_strong.update(np.copy(y))
+    w = o.w_filt_strong.update(np.copy(y))
+    
+    #print(w)
     
     # Mirror the color channels for symmetric output
     r = np.concatenate((r[::-1], r))
@@ -105,7 +108,8 @@ def visualize_spectrum(y, o):
     b = np.concatenate((b[::-1], b))
     w = np.concatenate((w[::-1], w))
     
-    print(r[220:])
+    
+    
     
     output = np.array([r, g, b, w]) * 255
     

@@ -101,12 +101,26 @@ class Opt :
 		
 		self.r_filt = ExpFilter(np.tile(0.01, self.NUM_PIXELS // 2), alpha_decay=0.45, alpha_rise=0.85)
 		print("Initialized Red filter: {}".format(self.r_filt))
+		#self.r_filt_strong = ExpFilter(np.tile(0.3, self.NUM_PIXELS // 2), alpha_decay=0.99, alpha_rise=0.01)
+		self.r_filt_strong = ExpFilter(np.tile(0.01, self.NUM_PIXELS // 2), alpha_decay=0.5, alpha_rise=0.99)
+		print("Initialized Red filter strong: {}".format(self.r_filt))
+		
 		self.g_filt = ExpFilter(np.tile(0.01, self.NUM_PIXELS // 2), alpha_decay=0.55, alpha_rise=0.6)
 		print("Initialized Green filter: {}".format(self.g_filt))
+		#self.g_filt_strong = ExpFilter(np.tile(0.2, self.NUM_PIXELS // 2), alpha_decay=0.99, alpha_rise=0.05)
+		self.g_filt_strong = ExpFilter(np.tile(0.3, self.NUM_PIXELS // 2), alpha_decay=0.85, alpha_rise=0.5)
+		print("Initialized Green filter strong: {}".format(self.g_filt))
+		
 		self.b_filt = ExpFilter(np.tile(0.01, self.NUM_PIXELS // 2), alpha_decay=0.55, alpha_rise=0.6)
 		print("Initialized Blue filter: {}".format(self.b_filt))
+		#self.b_filt_strong = ExpFilter(np.tile(0.1, self.NUM_PIXELS // 2), alpha_decay=0.99, alpha_rise=0.01)
+		self.b_filt_strong = ExpFilter(np.tile(0.1, self.NUM_PIXELS // 2), alpha_decay=0.85, alpha_rise=0.5)
+		print("Initialized Blue filter strong: {}".format(self.b_filt))
+		
 		self.w_filt = ExpFilter(np.tile(0.01, self.NUM_PIXELS // 2), alpha_decay=0.95, alpha_rise=0.95)
 		print("Initialized White filter: {}".format(self.w_filt))
+		self.w_filt_strong = ExpFilter(np.tile(0.00001, self.NUM_PIXELS // 2), alpha_decay=0.999, alpha_rise=0.001)
+		print("Initialized White filter strong: {}".format(self.w_filt))
 		self.w_mode = ExpFilter(np.tile(0.01, self.NUM_PIXELS // 2), alpha_decay=0.99, alpha_rise=0.01)
 
 		self.common_mode = ExpFilter(np.tile(0.01, self.NUM_PIXELS // 2), alpha_decay=0.99, alpha_rise=0.01)
